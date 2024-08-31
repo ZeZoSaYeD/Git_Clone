@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/note_model.dart';
 import 'package:flutter_application_1/screens/create_note.dart';
+import 'package:flutter_application_1/widgets/note_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,31 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView.builder(
         itemCount: notes.length,
         itemBuilder: (context,index){
-          return Card(
-            child: Padding(padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Text(
-                  notes[index].New_Title,
-                  style:const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-
-                const SizedBox(height: 10,),
-
-                 Text(
-                  notes[index].Describtion,
-                  style:const TextStyle(
-                    fontSize: 20,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-        );
+          return NoteCard(notes: notes[index], index: index, onNewNoteDeletion: onNewNoteDeletion);
       },
      ),
 
